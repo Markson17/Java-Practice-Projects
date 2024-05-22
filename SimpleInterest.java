@@ -8,38 +8,33 @@
 // The program takes input for the values of P, T, and R, and then uses these values to calculate the simple interest. 
 // Finally, it displays the calculated simple interest as the output.
 
-// Importing the Scanner class from the java.util package
 import java.util.Scanner;
 
-public class SimpleInterest {
-    public static void main(String[] arrgs) {
-        // Print the purpose of the program
-        System.out.println("A Java program to calculate Simple Interest ");
+public class SimpleInterest{
+    public static void main (String[] args){
 
-        // Create a Scanner object for user input
+        Double principal = 0.0;
+        Double rate = 0.0;
+        Double time = 0.0;
+        Double simpleInterest = 0.0;
+
+        System.out.print("Enter in the principal: ");
         Scanner input = new Scanner(System.in);
 
-        // Initialize variables
-        double principal = 0;
-        double time = 0;
-        double rate = 0;
-        double simpleInterest = 0;
-
-        // Prompt the user to input principal, time, and rate
-        System.out.print("Enter the principal value: ");
+        // assign the input to the principal
         principal = input.nextDouble();
-        System.out.print("Enter the time taken: ");
+
+        System.out.print("Enter in the time taken: ");
+        // assign the input to the time taken
         time = input.nextDouble();
-        System.out.print("Enter the rate value: ");
+
+        System.out.print("Enter in the rate: ");
+        // assign the input to the rate
         rate = input.nextDouble();
 
-        // Calculate the simple interest using the provided formula
-        simpleInterest = (principal * time * rate) / 100;
+        // calculate the simple interest
+        simpleInterest = (principal * rate * time)/100;
 
-        // Display the simple interest with formatting to 2 decimal places
-        System.out.printf("The simple interest is %.2f\n", simpleInterest);
-
-        // Close the Scanner object
-        input.close();
+        System.out.println("The simple interest is " + simpleInterest);
     }
 }
