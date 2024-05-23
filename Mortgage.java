@@ -13,28 +13,34 @@ public class Mortgage {
 
         Scanner input = new Scanner(System.in);
 
-        System.out.print("Principal: ");
-        principal = input.nextDouble();
+        while (true) {
+            System.out.print("Principal($1k - $IM): ");
+            if (input.equals("quit")){
+                break;
+            };
+            principal = input.nextDouble();
 
-        System.out.print("Annual Interest Rate: ");
-        annualInterestRate = input.nextDouble();
-        annualInterestRate = (double) annualInterestRate/100;
+            System.out.print("Annual Interest Rate: ");
+            annualInterestRate = input.nextDouble();
+            annualInterestRate = (double) annualInterestRate / 100;
 
-        rate = (double) annualInterestRate / 12;
+            rate = (double) annualInterestRate / 12;
 
-        System.out.print("Period(Years): ");
-        period = input.nextDouble();
-        period = period * 12;
+            System.out.print("Period(Years): ");
+            period = input.nextDouble();
+            period = period * 12;
+            
+            numerator = (double) rate * Math.pow((1 + rate), period);
+            denominator = (double) Math.pow((1 + rate), period) - 1;
 
-        numerator = (double) rate * Math.pow((1 + rate), period);
-        denominator = (double) Math.pow((1 + rate), period) - 1;
+            mortgage = principal * (double) (numerator / denominator);
+            
+            String formattedMortgage = NumberFormat.getCurrencyInstance().format(mortgage);
+            
+            System.out.println("Mortgage: " + formattedMortgage);
 
-        mortgage = principal * (double)(numerator / denominator);
-        
-        String formattedMortgage = NumberFormat.getCurrencyInstance().format(mortgage);
-
-        System.out.println("Mortgage: " + formattedMortgage);
-
+        }
         input.close();
-    }
+}
+
 }
